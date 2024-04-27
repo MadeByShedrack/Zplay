@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1010755993557",
+    "project_id": "zplay-27627",
+    "storage_bucket": "zplay-27627.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1010755993557:android:da6679d781c3b8cf60c75c",
+        "android_client_info": {
+          "package_name": "com.madebyshedrack.zplay"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXR5c1o_I-_5ZIs6DZOgUDI4JqlajxNSc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
