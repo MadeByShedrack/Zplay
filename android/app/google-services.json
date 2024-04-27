@@ -12,7 +12,20 @@
           "package_name": "com.madebyshedrack.zplay"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1010755993557-q9migb57m3geel3hp1lnhgrjlqr5bd33.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.madebyshedrack.zplay",
+            "certificate_hash": "3b16af1bb0e4656847529ce73198cbcd33374dea"
+          }
+        },
+        {
+          "client_id": "1010755993557-q6hccv75koqqtghqfm3vkkagt2ll5g1j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDXR5c1o_I-_5ZIs6DZOgUDI4JqlajxNSc"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1010755993557-q6hccv75koqqtghqfm3vkkagt2ll5g1j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

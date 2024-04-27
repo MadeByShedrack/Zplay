@@ -37,7 +37,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   title: "Welcome to Zplay",
                   description:
                       "Experience the thrill of virtual betting with zplay.",
-                  imagePath: "asset/onboard.png",
+                  imagePath: "asset/sport.png",
                 ),
                 OnboardHelper(
                   title: "Easy to use",

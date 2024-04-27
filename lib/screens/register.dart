@@ -1,11 +1,48 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print, use_build_context_synchronously
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:zplay/screens/home.dart';
 
-class RegisterPage extends StatelessWidget {
+class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
+
+  @override
+  State<RegisterPage> createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+  GoogleSignInAccount? _currentUser;
+  Future<void> _handleSignIn() async {
+    try {
+      await _googleSignIn.signOut();
+      final GoogleSignInAccount? googleUserAccount =
+          await _googleSignIn.signIn();
+      if (googleUserAccount != null) {
+        final GoogleSignInAuthentication googleAuth =
+            await googleUserAccount.authentication;
+        final AuthCredential credential = GoogleAuthProvider.credential(
+          accessToken: googleAuth.accessToken,
+          idToken: googleAuth.idToken,
+        );
+        final userCredential =
+            await FirebaseAuth.instance.signInWithCredential(credential);
+        final User? user = userCredential.user;
+        setState(() {
+          _currentUser = googleUserAccount;
+        });
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (_) => HomeScreen()),
+        );
+      }
+    } catch (error) {
+      print(error);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,11 +74,7 @@ class RegisterPage extends StatelessWidget {
               ),
               SizedBox(height: 32.0),
               ElevatedButton.icon(
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-                    return HomeScreen();
-                  }));
-                },
+                onPressed: _handleSignIn,
                 icon: Icon(FontAwesomeIcons.google),
                 label: Text("Sign in with Google"),
                 style: ElevatedButton.styleFrom(
